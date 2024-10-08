@@ -1,0 +1,5 @@
+Hello Dr. Owen, for this project I used a few resources. First I attempted to use SendGrid, which is an API this is supposed to 
+help with sending and recieving emails. I was not very familiar with it and used OpenAI so I could get help with the syntax. I also used 
+a website that I credited in the quiz section. I was able to launch my server by using node server.js, but the API not working
+made it really hard to pull up any info. I get an error that says "Cannot GET /" which I found out is a server route issue. I believe that I 
+executed Story 1 and Story 2 well, but the problems in Story 3 caused most of my problems.

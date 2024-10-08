@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: './sendgrid.env' });
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -6,20 +9,21 @@ import sgMail from '@sendgrid/mail';
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-//middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-//API key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-//endpoint
+app.get('/', (req, res) => {
+  res.send('Welcome to the Hackathon Registration API');
+});
+
 app.post('/send-email', (req, res) => {
   const { username, email, firstName, lastName } = req.body;
 
   const msg = {
-    to: 'jowen22@murraystate.edu', 
-    from: 'drakers@murraystate.edu', 
+    to: 'jowen22@murraystate.edu',
+    from: 'your-email@example.com',
     subject: 'New Hackathon Registration',
     text: `Username: ${username}\nEmail: ${email}\nFirst Name: ${firstName}\nLast Name: ${lastName}`,
     html: `<strong>Username:</strong> ${username}<br>
@@ -39,7 +43,6 @@ app.post('/send-email', (req, res) => {
     });
 });
 
-//start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
